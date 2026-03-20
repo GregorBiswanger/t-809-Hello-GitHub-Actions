@@ -1,5 +1,7 @@
 # Workflow konfiguration (Metadaten)
 name: Hello World
+env:
+  GLOBAL_MESSAGE: Hallo aus dem Workflow (Global)
 
 # Events
 on: push
@@ -9,16 +11,25 @@ jobs:
     say-hello:
         name: Begrüße Teilnehmer
         runs-on: ubuntu-latest
+        env:
+          JOB_MESSAGE: Hallo aus dem Say-Hello Job
 
         steps:
+            - name: Ausgabe Global und Job
+              run: |
+                echo "GLOBAL_MESSAGE: $GLOBAL_MESSAGE"
+                echo "JOB_MESSAGE: $JOB_MESSAGE"
+
             - name: Aktuelles Verzeichnis ansehen
-              run: pwd && ls -al
+              env:
+                STEP_MESSAGE: Message aus dem Step
+              run: pwd && ls -al && echo $STEP_MESSAGE
 
             - name: Projektdaten laden
               uses: actions/checkout@v6
 
             - name: Aktuelles Verzeichnis ansehen
-              run: pwd && ls -al
+              run: pwd && ls -al && echo $STEP_MESSAGE
 
     say-goodbye:
         name: Abschied
@@ -26,6 +37,11 @@ jobs:
         needs: say-hello
 
         steps:
+          - name: Ausgabe global und Job
+            run: |
+                echo "GLOBAL_MESSAGE: $GLOBAL_MESSAGE"
+                echo "JOB_MESSAGE: $JOB_MESSAGE"
+
           - name: Aktuelles Verzeichnis ansehen
             run: pwd && ls -al
         
