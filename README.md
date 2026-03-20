@@ -1,4 +1,7 @@
 # t-809-Hello-GitHub-Actions
+
+[![Hello World](https://github.com/GregorBiswanger/t-809-Hello-GitHub-Actions/actions/workflows/hello-workflow.yml/badge.svg)](https://github.com/GregorBiswanger/t-809-Hello-GitHub-Actions/actions/workflows/hello-workflow.yml)
+
 GitHub Actions Workshop Beispiel...
 
 0 → Minute
