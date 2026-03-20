@@ -1,0 +1,19 @@
+name: Context Demo
+
+on: 
+    push:
+    workflow_dispatch:
+
+jobs:
+    analysis:
+        runs-on: ubuntu-latest
+
+        steps:     
+        - name: Zeige GitHub Kontext
+          run: echo '${{ toJson(github) }}'
+
+        - name: Zeige Runner Kontext
+          run: echo '${{ toJson(runner) }}'
+        
+        - name: Zeige Steps Kontext
+          run: echo '${{ toJson(steps) }}'
