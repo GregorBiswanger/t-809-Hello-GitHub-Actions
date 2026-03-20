@@ -17,3 +17,10 @@ jobs:
         
         - name: Zeige Steps Kontext
           run: echo '${{ toJson(steps) }}'
+
+        - name: Step Message schreiben
+          id: secretMessage  
+          run: echo 'message=Wuhuuu!' > "$GITHUB_OUTPUT"
+
+        - name: Zeige Steps Kontext
+          run: echo '${{ toJson(steps) }}'
