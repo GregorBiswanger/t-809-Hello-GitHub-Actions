@@ -11,3 +11,5 @@ jobs:
 
         steps:
             - run: pwd && ls -al
+            - uses: actions/checkout@v4
+            - run: pwd && ls -al
